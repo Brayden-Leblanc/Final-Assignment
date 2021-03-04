@@ -44,7 +44,7 @@ let wpm = 0
 let cpm = 0
 let currInput = 0
 let currInputArray = 0
-var = quoteSpanArray = 0
+let quoteSpanArray = 0
 
 function updateQuote () {
   quoteText.textContent = null
