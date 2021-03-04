@@ -1,8 +1,5 @@
 // For parts of this code I have used a tutorial by geeksforgeeks as a guideline. In no portion did I copy/paste and instead wrote all of the code myself. Furthermore I have learned a ton about javascript and completely understand the code now. All of this being said I would like to thank you for introducing me into coding, as I will now be creating many personal projects, and teaching myself further so that I can hopefully work in the field when I am older. Enjoy!
 
-/* exported processCurrentText */
-/* exported startGame */
-
 // This defines the time limit, in this case it is 60
 const TIME_LIMIT = 60
 
@@ -203,6 +200,10 @@ function resetValues () {
   characterTyped = 0
   quoteNo = 0
   inputarea.disabled = false
+
+document.querySelector(".inputarea").addEventListener("input", processCurrentText)
+document.querySelector(".inputarea").addEventListener("focus", startGame)
+document.querySelector(".restartbtn").addEventListener("click", resetValues)
 
   inputarea.value = ''
   quoteText.textContent = 'Click on the area below to start the game.'
