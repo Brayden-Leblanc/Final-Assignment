@@ -1,7 +1,7 @@
 // For parts of this code I have used a tutorial by geeksforgeeks as a guideline. In no portion did I copy/paste and instead wrote all of the code myself. Furthermore I have learned a ton about javascript and completely understand the code now.
 
 // This defines the time limit, in this case it is 60
-const TIME_LIMIT = 60
+const TIME_LIMIT = 5
 
 // These are the quotes that are selected
 const quotes_array = [
@@ -21,39 +21,41 @@ const quotes_array = [
 ]
 
 // This selects the required elements
-const timer_text = document.querySelector('.curr-time')
-const accuracy_text = document.querySelector('.curr-accuracy')
-const error_text = document.querySelector('.curr-errors')
-const cpm_text = document.querySelector('.curr-cpm')
-const wpm_text = document.querySelector('.curr-wpm')
-const quote_text = document.querySelector('.quote')
+const timerText = document.querySelector('.curr-time')
+const accuracyText = document.querySelector('.curr-accuracy')
+const errorText = document.querySelector('.curr-errors')
+const cpmText = document.querySelector('.curr-cpm')
+const wpmText = document.querySelector('.curr-wpm')
+const quoteText = document.querySelector('.quote')
 const inputarea = document.querySelector('.inputarea')
 const restartbtn = document.querySelector('.restartbtn')
-const cpm_group = document.querySelector('.cpm')
-const wpm_group = document.querySelector('.wpm')
-const error_group = document.querySelector('.errors')
-const accuracy_group = document.querySelector('.accuracy')
+const cpmGroup = document.querySelector('.cpm')
+const wpmGroup = document.querySelector('.wpm')
+const errorGroup = document.querySelector('.errors')
+const accuracyGroup = document.querySelector('.accuracy')
 
 let timeLeft = TIME_LIMIT
 let timeElapsed = 0
-let total_errors = 0
+let totalErrors = 0
 let errors = 0
 let accuracy = 0
 let characterTyped = 0
-let current_quote = ''
+let currentQuote = ''
 let quoteNo = 0
 let timer = null
+let wpm = 0
+let cpm = 0
 
 function updateQuote () {
-  quote_text.textContent = null
-  current_quote = quotes_array[quoteNo]
+  quoteText.textContent = null
+  currentQuote = quotes_array[quoteNo]
 
   // This separates each character and makes an element
   // out of each of them as to individually style them
-  current_quote.split('').forEach(char => {
+  currentQuote.split('').forEach(char => {
     const charSpan = document.createElement('span')
     charSpan.innerText = char
-    quote_text.appendChild(charSpan)
+    quoteText.appendChild(charSpan)
   })
 
   // This rolls over to the first quote
@@ -76,9 +78,9 @@ function processCurrentText () {
   errors = 0
 
   // This compares the input text to the quote text so each character is stylized
-  quoteSpanArray = quote_text.querySelectorAll('span')
+  quoteSpanArray = quoteText.querySelectorAll('span')
   quoteSpanArray.forEach((char, index) => {
-    let typedChar = curr_input_array[index]
+    const typedChar = curr_input_array[index]
 
     // These are the characters not currently typed
     if (typedChar == null) {
@@ -102,21 +104,21 @@ function processCurrentText () {
   })
 
   // This displays the number of errors
-  error_text.textContent = total_errors + errors
+  errorText.textContent = totalErrors + errors
 
   // This will update the accuracy text
-  let correctCharacters = (characterTyped - (total_errors + errors))
-  let accuracyVal = ((correctCharacters / characterTyped) * 100)
-  accuracy_text.textContent = Math.round(accuracyVal)
+  const correctCharacters = (characterTyped - (totalErrors + errors))
+  const accuracyVal = ((correctCharacters / characterTyped) * 100)
+  accuracyText.textContent = Math.round(accuracyVal)
 
   // If the current text is completely typed
   // no matter the errors
-  if (curr_input.length === current_quote.length) {
+  if (curr_input.length === currentQuote.length) {
     updateQuote()
     document.getElementById('correct').play()
 
     // This updates the total errors
-    total_errors += errors
+    totalErrors += errors
 
     // This clears the input area
     inputarea.value = ''
@@ -132,7 +134,7 @@ function updateTimer () {
     timeElapsed++
 
     // This updates the timer text
-    timer_text.textContent = timeLeft + 's'
+    timerText.textContent = timeLeft + 's'
   } else {
     // This finishes the game
     finishGame()
@@ -155,28 +157,28 @@ function finishGame () {
   wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60))
 
   // This updates the cpm and wpm text
-  cpm_text.textContent = cpm
-  wpm_text.textContent = wpm
+  cpmText.textContent = cpm
+  wpmText.textContent = wpm
 
   // This displays the cpm and wpm
-  cpm_group.style.display = 'block'
-  wpm_group.style.display = 'block'
+  cpmGroup.style.display = 'block'
+  wpmGroup.style.display = 'block'
 
   // This determines what to say based on the wpm of the user
-  if (wpm >=200) {
-  quote_text.textContent = 'Hey man, cheating isn’t cool!'
+  if (wpm >= 200) {
+    quoteText.textContent = 'Hey man, cheating isn’t cool!'
   } else if (wpm >= 100) {
-  quote_text.textContent = 'You are in the top 1% of typists! Congratulations!'
+    quoteText.textContent = 'You are in the top 1% of typists! Congratulations!'
   } else if (wpm >= 90) {
-    quote_text.textContent = 'At this typing speed, you’re probably a gamer, coder, or genius. Either way, you’re doing great!'
+    quoteText.textContent = 'At this typing speed, you’re probably a gamer, coder, or genius. Either way, you’re doing great!'
   } else if (wpm >= 70) {
-    quote_text.textContent = 'You are way above average! You would qualify for any typing job assuming your typing accuracy is high enough.'
+    quoteText.textContent = 'You are way above average! You would qualify for any typing job assuming your typing accuracy is high enough.'
   } else if (wpm >= 50) {
-    quote_text.textContent = 'Congratulations! You’re above average.'
+    quoteText.textContent = 'Congratulations! You’re above average.'
   } else if (wpm >= 40) {
-    quote_text.textContent = 'You are now an average typist. You still have significant room for improvement. Keep on practicing!'
+    quoteText.textContent = 'You are now an average typist. You still have significant room for improvement. Keep on practicing!'
   } else {
-    quote_text.textContent = 'At this speed, your typing speed is way below average, and you should focus on proper typing technique.'
+    quoteText.textContent = 'At this speed, your typing speed is way below average, and you should focus on proper typing technique.'
   }
 }
 
@@ -193,18 +195,18 @@ function resetValues () {
   timeLeft = TIME_LIMIT
   timeElapsed = 0
   errors = 0
-  total_errors = 0
+  totalErrors = 0
   accuracy = 0
   characterTyped = 0
   quoteNo = 0
   inputarea.disabled = false
 
   inputarea.value = ''
-  quote_text.textContent = 'Click on the area below to start the game.'
-  accuracy_text.textContent = 100
-  timer_text.textContent = timeLeft + 's'
-  error_text.textContent = 0
+  quoteText.textContent = 'Click on the area below to start the game.'
+  accuracyText.textContent = 100
+  timerText.textContent = timeLeft + 's'
+  errorText.textContent = 0
   restartbtn.style.display = 'none'
-  cpm_group.style.display = 'none'
-  wpm_group.style.display = 'none'
+  cpmGroup.style.display = 'none'
+  wpmGroup.style.display = 'none'
 }
