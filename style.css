@@ -21,7 +21,7 @@ body {
   color: #6efcbb;
   font-weight: bold;
   font-family: sans-serif;
-  text-shadow: rgb(12, 141, 83) 4px 4px 0px
+  text-shadow: rgb(12, 141, 83) 4px 4px;
 }
 
 .header {
@@ -29,18 +29,22 @@ body {
   align-items: center;
 }
 
-.timer, .errors,
-.accuracy, .cpm, .wpm {
+.timer,
+.errors,
+.accuracy,
+.cpm,
+.wpm {
   background-color: #6efcbb;
   height: 60px;
   width: 70px;
   margin: 8px;
   padding: 12px;
   border-radius: 20%;
-  box-shadow: black 5px 8px 0px;
+  box-shadow: black 5px 8px;
 }
 
-.cpm, .wpm  {
+.cpm,
+.wpm  {
   display: none;
 }
 
@@ -61,7 +65,7 @@ body {
   font-size: 1.5rem;
   margin: 10px;
   padding: 25px;
-  box-shadow: black 5px 8px 0px;
+  box-shadow: black 5px 8px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -70,7 +74,7 @@ body {
   user-select: none;
 }
 
-.input_area {
+.inputarea {
   background-color: white;
   height: 80px;
   width: 40%;
@@ -79,7 +83,7 @@ body {
   margin: 15px;
   padding: 20px;
   border: 0px;
-  box-shadow: black 5px 8px 0px;
+  box-shadow: black 5px 8px;
   font-family: sans-serif;
 }
 
@@ -92,7 +96,7 @@ body {
   color: green;
 }
 
-.restart_btn {
+.restartbtn {
   display: none;
   background-color: black;
   font-size: 1.5rem;
@@ -116,6 +120,7 @@ body {
   background-size: 100px 100px;
   background-position: 0 0, 50px 50px;
   background-image: linear-gradient(45deg, #0c020e 25%, transparent 25%, transparent 75%, #0c020e 75%, #0c020e), linear-gradient(45deg, #0c020e 25%, transparent 25%, transparent 75%, #0c020e 75%, #0c020e);
+
   -webkit-animation: move-background 3s linear infinite;
           animation: move-background 3s linear infinite;
 }

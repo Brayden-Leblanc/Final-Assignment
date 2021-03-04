@@ -1,4 +1,4 @@
-// I have commented everything in the javascript portion to make reading of the code easier, enjoy!
+// For parts of this code I have used a tutorial by geeksforgeeks as a guideline. In no portion did I copy/paste and instead wrote all of the code myself. Furthermore I have learned a ton about javascript and completely understand the code now.
 
 // This defines the time limit, in this case it is 60
 let TIME_LIMIT = 60;
@@ -27,8 +27,8 @@ let error_text = document.querySelector(".curr-errors");
 let cpm_text = document.querySelector(".curr-cpm");
 let wpm_text = document.querySelector(".curr-wpm");
 let quote_text = document.querySelector(".quote");
-let input_area = document.querySelector(".input_area");
-let restart_btn = document.querySelector(".restart_btn");
+let inputarea = document.querySelector(".inputarea");
+let restartbtn = document.querySelector(".restartbtn");
 let cpm_group = document.querySelector(".cpm");
 let wpm_group = document.querySelector(".wpm");
 let error_group = document.querySelector(".errors");
@@ -66,7 +66,7 @@ function updateQuote() {
 function processCurrentText() {
 
   // This gets the current inputted text and splits it
-  curr_input = input_area.value;
+  curr_input = inputarea.value;
   curr_input_array = curr_input.split('');
 
   // This increments the total characters typed
@@ -93,7 +93,7 @@ function processCurrentText() {
     } else {
       char.classList.add('incorrect_char');
       char.classList.remove('correct_char');
-      document.getElementById('myAudio2').play();
+      document.getElementById('wrong').play();
 
       // This increments the number of errors
       errors++;
@@ -112,13 +112,13 @@ function processCurrentText() {
   // no matter the errors
   if (curr_input.length == current_quote.length) {
     updateQuote();
-    document.getElementById('myAudio3').play();
+    document.getElementById('correct').play();
 
     // This updates the total errors
     total_errors += errors;
 
     // This clears the input area
-    input_area.value = "";
+    inputarea.value = "";
   }
 }
 
@@ -136,7 +136,7 @@ function updateTimer() {
   else {
     // This finishs the game
     finishGame();
-    document.getElementById('myAudio').play();
+    document.getElementById('end').play();
   }
 }
 
@@ -145,10 +145,10 @@ function finishGame() {
   clearInterval(timer);
 
   // This disables the input area
-  input_area.disabled = true;
+  inputarea.disabled = true;
 
   // This will display restart button
-  restart_btn.style.display = "block";
+  restartbtn.style.display = "block";
 
   // This is the formula to calculate cpm and wpm
   cpm = Math.round(((characterTyped / timeElapsed) * 60));
@@ -199,14 +199,14 @@ function resetValues() {
   accuracy = 0;
   characterTyped = 0;
   quoteNo = 0;
-  input_area.disabled = false;
+  inputarea.disabled = false;
 
-  input_area.value = "";
+  inputarea.value = "";
   quote_text.textContent = 'Click on the area below to start the game.';
   accuracy_text.textContent = 100;
   timer_text.textContent = timeLeft + 's';
   error_text.textContent = 0;
-  restart_btn.style.display = "none";
+  restartbtn.style.display = "none";
   cpm_group.style.display = "none";
   wpm_group.style.display = "none";
 }
