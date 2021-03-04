@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <title>Speed Typing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<audio controls autoplay loop hidden>
+  <source src="sounds/DEEP SWIM.mp3" type="audio/mpeg">
+</audio>
+<audio id="myAudio" src="sounds/end.mp3"></audio>
+<audio id="myAudio2" src="sounds/wrong.mp3"></audio>
+<audio id="myAudio3" src="sounds/correct.mp3"></audio>
+  <div class="container">
+    <div class="heading">SPEED TYPING</div>
+    <div class="header">
+      <div class="wpm">
+        <div class="header_text">WPM</div>
+        <div class="curr_wpm">100</div>
+      </div>
+      <div class="cpm">
+        <div class="header_text">CPM</div>
+        <div class="curr_cpm">100</div>
+      </div>
+      <div class="errors">
+        <div class="header_text">Errors</div>
+        <div class="curr_errors">0</div>
+      </div>
+      <div class="timer">
+        <div class="header_text">Time</div>
+        <div class="curr_time">60s</div>
+      </div>
+      <div class="accuracy">
+        <div class="header_text">% Accuracy</div>
+        <div class="curr_accuracy">100</div>
+      </div>
+    </div>
+    <div class="quote">Click on the area below to start the game. When the game starts, type the text exactly as shown as accurately and quickly as possible for the best results.</div>
+    <textarea class="input_area" placeholder="start typing here to learn your WPM and CPM..." oninput="processCurrentText()"
+      onfocus="startGame()"></textarea>
+    <button class="restart_btn" onclick="resetValues()">PRESS TO PLAY AGAIN</button>
+  </div>
+  <div id="checkerboard"></div>
+  <script src="game.js"></script>
+</body>
+</html>

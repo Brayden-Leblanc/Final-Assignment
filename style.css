@@ -1,0 +1,143 @@
+body {
+  height: 100vh;
+  background: #ff70a4;
+  overflow: hidden;
+  perspective: 600px;
+  color: black;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  margin-bottom: 20px;
+  font-size: 3rem;
+  text-align: center;
+  z-index: 2;
+  color: #6EFCBB;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-shadow: 4px 4px 0px rgb(12, 141, 83)
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.timer, .errors,
+.accuracy, .cpm, .wpm {
+  background-color: #6EFCBB;
+  height: 60px;
+  width: 70px;
+  margin: 8px;
+  padding: 12px;
+  border-radius: 20%;
+  box-shadow: black 5px 8px 0px;
+}
+
+.cpm, .wpm  {
+  display: none;
+}
+
+.header_text {
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+
+.curr_time, .curr_errors,
+.curr_accuracy, .curr_cpm,
+.curr_wpm {
+  font-size: 2.75rem;
+}
+
+.quote {
+  background-color: white;
+  font-size: 1.5rem;
+  margin: 10px;
+  padding: 25px;
+  box-shadow: black 5px 8px 0px;
+}
+
+.input_area {
+  background-color: white;
+  height: 80px;
+  width: 40%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 15px;
+  padding: 20px;
+  border: 0px;
+  box-shadow: black 5px 8px 0px;
+  font-family: sans-serif;
+}
+
+.incorrect_char {
+  color: red;
+  text-decoration: underline;
+}
+
+.correct_char {
+  color: green;
+}
+
+.restart_btn {
+  display: none;
+  background-color: black;
+  font-size: 1.5rem;
+  padding: 10px;
+  border: 0px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.quote {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* This is the checkerboard background */
+
+#checkerboard {
+  position: absolute;
+  bottom: -50%;
+  right: -60%;
+  height: 150%;
+  width: 200%;
+  transform: rotateX(75deg);
+  transform-origin: center center;
+  background-color: #ff70a4;
+  background-size: 100px 100px;
+  background-position: 0 0, 50px 50px;
+  background-image: linear-gradient(45deg, #0c020e 25%, transparent 25%, transparent 75%, #0c020e 75%, #0c020e), linear-gradient(45deg, #0c020e 25%, transparent 25%, transparent 75%, #0c020e 75%, #0c020e);
+  -webkit-animation: move-background 3s linear infinite;
+          animation: move-background 3s linear infinite;
+}
+#checkerboard:after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(#ff70a4, transparent);
+}
+
+@-webkit-keyframes move-background {
+  to {
+    background-position: 0 100px, 50px 150px;
+  }
+}
+
+@keyframes move-background {
+  to {
+    background-position: 0 100px, 50px 150px;
+  }
+}
