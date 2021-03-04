@@ -21,18 +21,18 @@ const quotes_array = [
 ]
 
 // This selects the required elements
-let timer_text = document.querySelector('.curr-time')
-let accuracy_text = document.querySelector('.curr-accuracy')
-let error_text = document.querySelector('.curr-errors')
-let cpm_text = document.querySelector('.curr-cpm')
-let wpm_text = document.querySelector('.curr-wpm')
-let quote_text = document.querySelector('.quote')
-let inputarea = document.querySelector('.inputarea')
-let restartbtn = document.querySelector('.restartbtn')
-let cpm_group = document.querySelector('.cpm')
-let wpm_group = document.querySelector('.wpm')
-let error_group = document.querySelector('.errors')
-let accuracy_group = document.querySelector('.accuracy')
+const timer_text = document.querySelector('.curr-time')
+const accuracy_text = document.querySelector('.curr-accuracy')
+const error_text = document.querySelector('.curr-errors')
+const cpm_text = document.querySelector('.curr-cpm')
+const wpm_text = document.querySelector('.curr-wpm')
+const quote_text = document.querySelector('.quote')
+const inputarea = document.querySelector('.inputarea')
+const restartbtn = document.querySelector('.restartbtn')
+const cpm_group = document.querySelector('.cpm')
+const wpm_group = document.querySelector('.wpm')
+const error_group = document.querySelector('.errors')
+const accuracy_group = document.querySelector('.accuracy')
 
 let timeLeft = TIME_LIMIT
 let timeElapsed = 0
@@ -40,15 +40,15 @@ let total_errors = 0
 let errors = 0
 let accuracy = 0
 let characterTyped = 0
-let current_quote = ""
+let current_quote = ''
 let quoteNo = 0
 let timer = null
 
-function updateQuote() {
+function updateQuote () {
   quote_text.textContent = null
   current_quote = quotes_array[quoteNo]
 
-  // This separates each character and makes an element 
+  // This separates each character and makes an element
   // out of each of them as to individually style them
   current_quote.split('').forEach(char => {
     const charSpan = document.createElement('span')
@@ -57,13 +57,14 @@ function updateQuote() {
   })
 
   // This rolls over to the first quote
-  if (quoteNo < quotes_array.length - 1)
+  if (quoteNo < quotes_array.length - 1) {
     quoteNo++
-  else
+  } else {
     quoteNo = 0
+  }
 }
 
-function processCurrentText() {
+function processCurrentText () {
 
   // This gets the current inputted text and splits it
   curr_input = inputarea.value
@@ -110,7 +111,7 @@ function processCurrentText() {
 
   // If the current text is completely typed
   // no matter the errors
-  if (curr_input.length == current_quote.length) {
+  if (curr_input.length === current_quote.length) {
     updateQuote()
     document.getElementById('correct').play()
 
@@ -118,11 +119,11 @@ function processCurrentText() {
     total_errors += errors
 
     // This clears the input area
-    inputarea.value = ""
+    inputarea.value = ''
   }
 }
 
-function updateTimer() {
+function updateTimer () {
   if (timeLeft > 0) {
     // This decreases the current time left
     timeLeft--
@@ -131,16 +132,15 @@ function updateTimer() {
     timeElapsed++
 
     // This updates the timer text
-    timer_text.textContent = timeLeft + "s"
-  }
-  else {
-    // This finishs the game
+    timer_text.textContent = timeLeft + 's'
+  } else {
+    // This finishes the game
     finishGame()
     document.getElementById('end').play()
   }
 }
 
-function finishGame() {
+function finishGame () {
   // This stops the timer
   clearInterval(timer)
 
@@ -148,7 +148,7 @@ function finishGame() {
   inputarea.disabled = true
 
   // This will display restart button
-  restartbtn.style.display = "block"
+  restartbtn.style.display = 'block'
 
   // This is the formula to calculate cpm and wpm
   cpm = Math.round(((characterTyped / timeElapsed) * 60))
@@ -159,17 +159,17 @@ function finishGame() {
   wpm_text.textContent = wpm
 
   // This displays the cpm and wpm
-  cpm_group.style.display = "block"
-  wpm_group.style.display = "block"
+  cpm_group.style.display = 'block'
+  wpm_group.style.display = 'block'
 
   // This determines what to say based on the wpm of the user
   if (wpm >=200) {
   quote_text.textContent = 'Hey man, cheating isn’t cool!'
-  } else if (wpm >=100) {
+  } else if (wpm >= 100) {
   quote_text.textContent = 'You are in the top 1% of typists! Congratulations!'
-  } else if (wpm >=90) {
+  } else if (wpm >= 90) {
     quote_text.textContent = 'At this typing speed, you’re probably a gamer, coder, or genius. Either way, you’re doing great!'
-  } else if (wpm >=70) {
+  } else if (wpm >= 70) {
     quote_text.textContent = 'You are way above average! You would qualify for any typing job assuming your typing accuracy is high enough.'
   } else if (wpm >= 50) {
     quote_text.textContent = 'Congratulations! You’re above average.'
@@ -180,7 +180,7 @@ function finishGame() {
   }
 }
 
-function startGame() {
+function startGame () {
   resetValues()
   updateQuote()
 
@@ -189,7 +189,7 @@ function startGame() {
   timer = setInterval(updateTimer, 1000)
 }
 
-function resetValues() {
+function resetValues () {
   timeLeft = TIME_LIMIT
   timeElapsed = 0
   errors = 0
@@ -199,12 +199,12 @@ function resetValues() {
   quoteNo = 0
   inputarea.disabled = false
 
-  inputarea.value = ""
+  inputarea.value = ''
   quote_text.textContent = 'Click on the area below to start the game.'
   accuracy_text.textContent = 100
   timer_text.textContent = timeLeft + 's'
   error_text.textContent = 0
-  restartbtn.style.display = "none"
-  cpm_group.style.display = "none"
-  wpm_group.style.display = "none"
+  restartbtn.style.display = 'none'
+  cpm_group.style.display = 'none'
+  wpm_group.style.display = 'none'
 }
