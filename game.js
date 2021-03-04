@@ -1,7 +1,7 @@
 // For parts of this code I have used a tutorial by geeksforgeeks as a guideline. In no portion did I copy/paste and instead wrote all of the code myself. Furthermore I have learned a ton about javascript and completely understand the code now. All of this being said I would like to thank you for introducing me into coding, as I will now be creating many personal projects, and teaching myself further so that I can hopefully work in the field when I am older. Enjoy!
 
 // This defines the time limit, in this case it is 60
-const TIME_LIMIT = 5
+const TIME_LIMIT = 60
 
 // These are the quotes that are selected
 const quotesArray = [
@@ -44,7 +44,7 @@ let wpm = 0
 let cpm = 0
 let currInput = 0
 let currInputArray = 0
-let = quoteSpanArray = 0
+var = quoteSpanArray = 0
 
 function updateQuote () {
   quoteText.textContent = null
