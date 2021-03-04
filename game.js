@@ -1,10 +1,10 @@
-// For parts of this code I have used a tutorial by geeksforgeeks as a guideline. In no portion did I copy/paste and instead wrote all of the code myself. Furthermore I have learned a ton about javascript and completely understand the code now.
+// For parts of this code I have used a tutorial by geeksforgeeks as a guideline. In no portion did I copy/paste and instead wrote all of the code myself. Furthermore I have learned a ton about javascript and completely understand the code now. All of this being said I would like to thank you for introducing me into coding, as I will now be creating many personal projects, and teaching myself further so that I can hopefully work in the field when I am older. Enjoy!
 
 // This defines the time limit, in this case it is 60
 const TIME_LIMIT = 5
 
 // These are the quotes that are selected
-const quotes_array = [
+const quotesArray = [
   'The quick brown fox jumps over the lazy dog.',
   'Life is like riding a bicycle. To keep your balance, you must keep moving.',
   'Sometimes the questions are complicated and the answers are simple.',
@@ -31,24 +31,24 @@ const inputarea = document.querySelector('.inputarea')
 const restartbtn = document.querySelector('.restartbtn')
 const cpmGroup = document.querySelector('.cpm')
 const wpmGroup = document.querySelector('.wpm')
-const errorGroup = document.querySelector('.errors')
-const accuracyGroup = document.querySelector('.accuracy')
 
 let timeLeft = TIME_LIMIT
 let timeElapsed = 0
 let totalErrors = 0
 let errors = 0
-let accuracy = 0
 let characterTyped = 0
 let currentQuote = ''
 let quoteNo = 0
 let timer = null
 let wpm = 0
 let cpm = 0
+let currInput = 0
+let currInputArray = 0
+let = quoteSpanArray = 0
 
 function updateQuote () {
   quoteText.textContent = null
-  currentQuote = quotes_array[quoteNo]
+  currentQuote = quotesArray[quoteNo]
 
   // This separates each character and makes an element
   // out of each of them as to individually style them
@@ -59,7 +59,7 @@ function updateQuote () {
   })
 
   // This rolls over to the first quote
-  if (quoteNo < quotes_array.length - 1) {
+  if (quoteNo < quotesArray.length - 1) {
     quoteNo++
   } else {
     quoteNo = 0
@@ -69,8 +69,8 @@ function updateQuote () {
 function processCurrentText () {
 
   // This gets the current inputted text and splits it
-  curr_input = inputarea.value
-  curr_input_array = curr_input.split('')
+  currInput = inputarea.value
+  currInputArray = currInput.split('')
 
   // This increments the total characters typed
   characterTyped++
@@ -80,7 +80,7 @@ function processCurrentText () {
   // This compares the input text to the quote text so each character is stylized
   quoteSpanArray = quoteText.querySelectorAll('span')
   quoteSpanArray.forEach((char, index) => {
-    const typedChar = curr_input_array[index]
+    const typedChar = currInputArray[index]
 
     // These are the characters not currently typed
     if (typedChar == null) {
@@ -113,7 +113,7 @@ function processCurrentText () {
 
   // If the current text is completely typed
   // no matter the errors
-  if (curr_input.length === currentQuote.length) {
+  if (currInput.length === currentQuote.length) {
     updateQuote()
     document.getElementById('correct').play()
 
