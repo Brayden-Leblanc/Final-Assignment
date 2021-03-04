@@ -44,7 +44,7 @@ body {
 }
 
 .cpm,
-.wpm  {
+.wpm {
   display: none;
 }
 
@@ -82,7 +82,6 @@ body {
   font-weight: 600;
   margin: 15px;
   padding: 20px;
-  border: 0px;
   box-shadow: black 5px 8px;
   font-family: sans-serif;
 }
@@ -101,7 +100,6 @@ body {
   background-color: black;
   font-size: 1.5rem;
   padding: 10px;
-  border: 0px;
   color: white;
   font-family: sans-serif;
 }
@@ -124,7 +122,8 @@ body {
   -webkit-animation: move-background 3s linear infinite;
           animation: move-background 3s linear infinite;
 }
-#checkerboard:after {
+
+#checkerboard::after {
   content: "";
   display: block;
   height: 100%;
