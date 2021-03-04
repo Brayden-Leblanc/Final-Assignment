@@ -41,8 +41,6 @@ let characterTyped = 0
 let currentQuote = ''
 let quoteNo = 0
 let timer = null
-let wpm = 0
-let cpm = 0
 let currInput = 0
 let currInputArray = 0
 let quoteSpanArray = 0
@@ -153,8 +151,8 @@ function finishGame () {
   restartbtn.style.display = 'block'
 
   // This is the formula to calculate cpm and wpm
-  cpm = Math.round(((characterTyped / timeElapsed) * 60))
-  wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60))
+  let cpm = Math.round(((characterTyped / timeElapsed) * 60))
+  let wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60))
 
   // This updates the cpm and wpm text
   cpmText.textContent = cpm
