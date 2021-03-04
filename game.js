@@ -201,9 +201,9 @@ function resetValues () {
   quoteNo = 0
   inputarea.disabled = false
 
-document.querySelector(".inputarea").addEventListener("input", processCurrentText)
-document.querySelector(".inputarea").addEventListener("focus", startGame)
-document.querySelector(".restartbtn").addEventListener("click", resetValues)
+  document.querySelector('.inputarea').addEventListener('input', processCurrentText)
+  document.querySelector('.inputarea').addEventListener('focus', startGame)
+  document.querySelector('.restartbtn').addEventListener('click', resetValues)
 
   inputarea.value = ''
   quoteText.textContent = 'Click on the area below to start the game.'
