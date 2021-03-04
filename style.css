@@ -18,10 +18,10 @@ body {
   font-size: 3rem;
   text-align: center;
   z-index: 2;
-  color: #6EFCBB;
+  color: #6efcbb;
   font-weight: bold;
   font-family: sans-serif;
-  text-shadow: 4px 4px 0px rgb(12, 141, 83)
+  text-shadow: rgb(12, 141, 83) 4px 4px 0px
 }
 
 .header {
@@ -31,7 +31,7 @@ body {
 
 .timer, .errors,
 .accuracy, .cpm, .wpm {
-  background-color: #6EFCBB;
+  background-color: #6efcbb;
   height: 60px;
   width: 70px;
   margin: 8px;
@@ -62,6 +62,12 @@ body {
   margin: 10px;
   padding: 25px;
   box-shadow: black 5px 8px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .input_area {
@@ -94,15 +100,6 @@ body {
   border: 0px;
   color: white;
   font-family: sans-serif;
-}
-
-.quote {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 /* This is the checkerboard background */

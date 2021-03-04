@@ -1,36 +1,38 @@
+// I have commented everything in the javascript portion to make reading of the code easier, enjoy!
+
 // This defines the time limit, in this case it is 60
 let TIME_LIMIT = 60;
 
 // These are the quotes that are selected
 let quotes_array = [
-  "The quick brown fox jumps over the lazy dog.",
-  "Life is like riding a bicycle. To keep your balance, you must keep moving.",
-  "Sometimes the questions are complicated and the answers are simple.",
-  "For every minute you are angry you lose sixty seconds of happiness.",
-  "It is better to be hated for what you are than to be loved for what you are not.",
-  "You only live once, but if you do it right, once is enough.",
-  "If you can't explain it to a six year old, you don't understand it yourself.",
-  "Life isn't about finding yourself. Life is about creating yourself.",
-  "The difference between genius and stupidity is: genius has its limits.",
-  "Anyone who has never made a mistake has never tried anything new.",
-  "It’s no use going back to yesterday, because I was a different person then.",
-  "I speak to everyone in the same way, whether he is the garbage man or the president of the university.",
-  "I wish I could freeze this moment, right here, right now and live in it forever.",
+  'The quick brown fox jumps over the lazy dog.",
+  'Life is like riding a bicycle. To keep your balance, you must keep moving.',
+  'Sometimes the questions are complicated and the answers are simple.',
+  'For every minute you are angry you lose sixty seconds of happiness.',
+  'It is better to be hated for what you are than to be loved for what you are not.',
+  'You only live once, but if you do it right, once is enough.",
+  "If you can't explain it to a six year old, you don't understand it yourself.',
+  "Life isn't about finding yourself. Life is about creating yourself.',
+  'The difference between genius and stupidity is: genius has its limits.',
+  'Anyone who has never made a mistake has never tried anything new.',
+  'It’s no use going back to yesterday, because I was a different person then.',
+  'I speak to everyone in the same way, whether he is the garbage man or the president of the university.',
+  'I wish I could freeze this moment, right here, right now and live in it forever.',
 ];
 
 // This selects the required elements
-let timer_text = document.querySelector(".curr_time");
-let accuracy_text = document.querySelector(".curr_accuracy");
-let error_text = document.querySelector(".curr_errors");
-let cpm_text = document.querySelector(".curr_cpm");
-let wpm_text = document.querySelector(".curr_wpm");
-let quote_text = document.querySelector(".quote");
-let input_area = document.querySelector(".input_area");
-let restart_btn = document.querySelector(".restart_btn");
-let cpm_group = document.querySelector(".cpm");
-let wpm_group = document.querySelector(".wpm");
-let error_group = document.querySelector(".errors");
-let accuracy_group = document.querySelector(".accuracy");
+let timer_text = document.querySelector('.curr_time');
+let accuracy_text = document.querySelector('.curr_accuracy');
+let error_text = document.querySelector('.curr_errors');
+let cpm_text = document.querySelector('.curr_cpm');
+let wpm_text = document.querySelector('.curr_wpm');
+let quote_text = document.querySelector('.quote');
+let input_area = document.querySelector('.input_area');
+let restart_btn = document.querySelector('.restart_btn');
+let cpm_group = document.querySelector('.cpm');
+let wpm_group = document.querySelector('.wpm');
+let error_group = document.querySelector('.errors');
+let accuracy_group = document.querySelector('.accuracy');
 
 let timeLeft = TIME_LIMIT;
 let timeElapsed = 0;
@@ -72,6 +74,7 @@ function processCurrentText() {
 
   errors = 0;
 
+  // This compares the input text to the quote text 
   quoteSpanArray = quote_text.querySelectorAll('span');
   quoteSpanArray.forEach((char, index) => {
     let typedChar = curr_input_array[index]
@@ -161,19 +164,19 @@ function finishGame() {
 
   // This determines what to say based on the wpm of the user
   if (wpm >=200) {
-  quote_text.textContent = "Hey man, cheating isn't cool!";
+  quote_text.textContent = 'Hey man, cheating isnt cool!';
   } else if (wpm >=100) {
-  quote_text.textContent = "You are in the top 1% of typists! Congratulations!";
+  quote_text.textContent = 'You are in the top 1% of typists! Congratulations!';
   } else if (wpm >=90) {
-    quote_text.textContent = "At this typing speed, you’re probably a gamer, coder, or genius. Either way, you’re doing great!";
+    quote_text.textContent = 'At this typing speed, you’re probably a gamer, coder, or genius. Either way, you’re doing great!';
   } else if (wpm >=70) {
-    quote_text.textContent = "You are way above average! You would qualify for any typing job assuming your typing accuracy is high enough.";
+    quote_text.textContent = 'You are way above average! You would qualify for any typing job assuming your typing accuracy is high enough.';
   } else if (wpm >= 50) {
-    quote_text.textContent = "Congratulations! You’re above average.";
+    quote_text.textContent = 'Congratulations! You’re above average.';
   } else if (wpm >= 40) {
-    quote_text.textContent = "You are now an average typist. You still have significant room for improvement. Keep on practicing!";
+    quote_text.textContent = 'You are now an average typist. You still have significant room for improvement. Keep on practicing!';
   } else {
-    quote_text.textContent = "At this speed, your typing speed is way below average, and you should focus on proper typing technique.";
+    quote_text.textContent = 'At this speed, your typing speed is way below average, and you should focus on proper typing technique.';
   }
 }
 
